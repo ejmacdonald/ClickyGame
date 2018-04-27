@@ -22,5 +22,29 @@
   {
     "id": 6,
     "image": "dog6.jpg" 
+  },
+  {
+    "id": 7,
+    "image": "dog7.jpg"
+  },
+  {
+    "id": 8,
+    "image": "dog8.jpg"   
+  },
+  {
+    "id": 9,
+    "image": "dog9.jpg" 
+  },
+  {
+    "id": 10,
+    "image": "dog10.jpg" 
+  },
+  {
+    "id": 11,
+    "image": "dog11.jpg" 
+  },
+  {
+    "id": 12,
+    "image": "dog12.jpg" 
   }
 ]

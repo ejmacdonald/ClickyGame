@@ -1,21 +1,23 @@
 import React from "react";
+import "./ImageTile.css";
 
 
 
 const formatStyle = {
-    width: "200px",
-    height: "200px"
+    width: "150px",
+    height: "150px"
 };
 
+// style={formatStyle}
 
 const ImageTile = (props) => (
-  <div>
-    <div className="card-img-top" id={props.id} onClick={props.imageClick}>
-      <div className="img-container">
-        <img className="card-img-top" style={formatStyle} src={require("../../images/" + props.src)} alt={props.id}></img>
-      </div>
-    </div>
-  </div>
+ <div className="card">
+   <div className="img-container">
+    <a className="card-img-top" id={props.id} onClick={props.imageClick}>
+        <img style={formatStyle} alt={props.id} src={require("../../images/" + props.src)}/>
+    </a>
+   </div>
+ </div>
 );
 
 export default ImageTile;

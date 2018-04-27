@@ -36,7 +36,7 @@ class App extends Component {
           message: "Nice Job, keep going!"
         }
       )
-      console.log("clickedDogArray#2: " + this.state.clickedDogArray);
+      
     } else {
       //already clicked the dog, player fails
       this.setState(
@@ -58,15 +58,19 @@ class App extends Component {
           score={this.state.score}
           message={this.state.message}
         />
-        <div>
-          {this.state.dogs.map((dog) => (
-            <ImageTile
-              id={dog.id}
-              src={dog.image}
-              imageClick={this.imageClick}
-            />
-          ))}
-        </div>
+        {/* <div class="container">
+          <div class="row">
+            <div class="col-sm"> */}
+              {this.state.dogs.map((dog) => (
+                <ImageTile
+                  id={dog.id}
+                  src={dog.image}
+                  imageClick={this.imageClick}
+                />
+              ))}
+            {/* </div>
+          </div>
+        </div> */}
       </div>
     );
   }
