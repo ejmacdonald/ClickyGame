@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "image": "dog1.jpg"
+  },
+  {
+    "id": 2,
+    "image": "dog2.jpg"   
+  },
+  {
+    "id": 3,
+    "image": "dog3.jpg" 
+  },
+  {
+    "id": 4,
+    "image": "dog4.jpg" 
+  },
+  {
+    "id": 5,
+    "image": "dog5.jpg" 
+  },
+  {
+    "id": 6,
+    "image": "dog6.jpg" 
+  }
+]
