@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 
 import Title from "./components/Title";
-
 import ImageTile from "./components/ImageTile";
-import dogs from "./image.json"
+// import Modal from "./components/Modal";
+import dogs from "./image.json";
+import encouragement from "./encouragement.json";
 
 class App extends Component {
   state = {
@@ -28,12 +29,14 @@ class App extends Component {
         return 0.5 - Math.random();
       })
 
+      const randomMessageIndex = Math.floor(Math.random() * (encouragement.length + 1)); 
+
       this.setState(
         {
           dogs: newOrder,
           clickeDogArray: this.state.clickedDogArray.push(clickedDog),
           score: this.state.score + 1,
-          message: "Nice Job, keep going!"
+          message: encouragement[randomMessageIndex]
         }
       )
       
@@ -58,20 +61,18 @@ class App extends Component {
           score={this.state.score}
           message={this.state.message}
         />
-        {/* <div class="container">
-          <div class="row">
-            <div class="col-sm"> */}
-              {this.state.dogs.map((dog) => (
-                <ImageTile
-                  id={dog.id}
-                  src={dog.image}
-                  imageClick={this.imageClick}
-                />
-              ))}
-            {/* </div>
-          </div>
-        </div> */}
+          {this.state.dogs.map((dog) => (
+            <ImageTile
+              id={dog.id}
+              src={dog.image}
+              imageClick={this.imageClick}
+            />
+          ))}
       </div>
+      // <Modal 
+      //   id={lose}
+      //   action={toggle}
+      // />
     );
   }
 }
