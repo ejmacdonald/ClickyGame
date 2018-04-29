@@ -2,7 +2,6 @@ import React, { Component } from "react";
 
 import Title from "./components/Title";
 import ImageTile from "./components/ImageTile";
-// import Modal from "./components/Modal";
 import dogs from "./image.json";
 import encouragement from "./encouragement.json";
 
@@ -17,31 +16,44 @@ class App extends Component {
   //check to see if the clicked dog has already been selected
   imageClick = (event) => {
     const clickedDog = event.target.alt;
-    console.log ("id: " + clickedDog);
-    console.log ("clickedDogArray#1: " + this.state.clickedDogArray);
+
     let inClickedArray = this.state.clickedDogArray.indexOf(clickedDog);
-    console.log ("inClickedArray: " + inClickedArray);
 
     if (inClickedArray === -1) {
-      //Not previously clicked.  Now:  reorder dogs, add id to clickedDogArray and increment score.
+      // Not previously clicked.
 
-      const newOrder = this.state.dogs.sort(function(a, b) {
-        return 0.5 - Math.random();
-      })
+      if (this.state.score == "11") {
+        this.setState(
+          {
+            dogs,
+            clickedDogArray: [],
+            score: 0,
+            message: "Congratulations, you win!"
+          }
+        )
+      } else {
+        // Reorder the dogs
+        const newOrder = this.state.dogs.sort(function(a, b) {
+          return 0.5 - Math.random();
+        });
 
-      const randomMessageIndex = Math.floor(Math.random() * (encouragement.length + 1)); 
+        // Next:  Get a random index for the encouragement array
+        const randomMessageIndex = Math.floor(Math.random() * (encouragement.length)); 
 
-      this.setState(
-        {
-          dogs: newOrder,
-          clickeDogArray: this.state.clickedDogArray.push(clickedDog),
-          score: this.state.score + 1,
-          message: encouragement[randomMessageIndex]
-        }
-      )
+        // Set the new state
+        this.setState(
+          {
+            dogs: newOrder,
+            clickeDogArray: this.state.clickedDogArray.push(clickedDog),
+            score: this.state.score + 1,
+            message: encouragement[randomMessageIndex]
+          }
+        );
+      }
       
     } else {
-      //already clicked the dog, player fails
+      // already clicked the dog, player fails
+      // Reset the State to the beginning of the game
       this.setState(
         {
           dogs,
@@ -53,7 +65,7 @@ class App extends Component {
     }
   }
 
-
+// Render the content out to the page
   render() {
     return (
       <div className="wrapper">
@@ -69,18 +81,7 @@ class App extends Component {
             />
           ))}
       </div>
-      // <Modal 
-      //   id={lose}
-      //   action={toggle}
-      // />
     );
-  }
-}
-
-function shuffleArray(array) {
-  for (let i = array.length - 1; i > 0; i--) {
-      let j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
   }
 }
 
